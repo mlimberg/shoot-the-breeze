@@ -1,0 +1,19 @@
+@mixin input-button($color) {
+  height: 30px;
+  width: 60px;
+  border: none;
+  border-radius: 3px;
+  background-color: $color;
+  color: #FFF;
+  margin: 5px;
+  font-size: 14px;
+  font-weight: 300;
+  &:focus {
+    outline: none;
+  }
+  &:hover {
+    cursor: pointer;
+    color: $color;
+    background-color: #FFF;
+  }
+}

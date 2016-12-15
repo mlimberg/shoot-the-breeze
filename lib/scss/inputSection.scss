@@ -1,0 +1,39 @@
+.messageInputSection {
+  background-color: $input-background-color;
+  display: flex;
+  flex-direction: row;
+  height: 50px;
+  align-items: center;
+}
+
+.charCount {
+  color: #FFF;
+  font-weight: 300;
+  font-size: 13px;
+  margin: 5px 10px;
+  width: 20px;
+  text-align: center;
+}
+
+.messageInput {
+  display: inline-block;
+  background-color: $input-background;
+  height: 30px;
+  width: 75%;
+  border: none;
+  outline: none;
+  border-radius: 3px;
+  margin: 5px 10px;
+  font-size: 14px;
+  &::webkit-input-placeholder {
+    color: red;
+  }
+}
+
+.submitMsgBtn {
+  @include input-button($submit-background);
+}
+
+.clearMsgBtn {
+  @include input-button($clear-background);
+}

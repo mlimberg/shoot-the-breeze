@@ -1,7 +1,9 @@
 @import 'reset';
-@import 'MessageSection';
-@import 'variables';
 @import 'fonts';
+@import 'variables';
+@import 'mixins';
+@import 'MessageSection';
+@import 'inputSection';
 
 
 $wtf: #ff0080;
