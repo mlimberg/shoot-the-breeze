@@ -1,9 +1,16 @@
+@import 'reset';
+@import 'fonts';
+@import 'variables';
+@import 'mixins';
 @import 'MessageSection';
+@import 'inputSection';
+
 
 $wtf: #ff0080;
 $ridiculous: cursive;
 
 body {
+  font-family: $main-font;
 }
 
 .hello-world {
