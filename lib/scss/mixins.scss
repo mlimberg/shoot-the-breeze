@@ -16,4 +16,14 @@
     color: $color;
     background-color: #FFF;
   }
+  &:disabled {
+    background-color: gray;
+    color: #FFF;
+    cursor: default;
+  }
+  &[disabled]:hover {
+    background-color: gray;
+    color: #FFF;
+    cursor: default;
+  }
 }
