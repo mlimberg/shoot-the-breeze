@@ -1,3 +1,24 @@
+@import 'variables';
+
 .messageSection {
-  height: 300px;
+  height: 600px;
+}
+
+.time-stamp, .user-stamp {
+  display: inline-block;
+  margin-top: 16px;
+  margin-left: 20px;
+}
+
+.message-stamp {
+  margin: 7px 0px 6px 20px;
+}
+
+.time-stamp {
+  color: $time-stamp-color;
+}
+
+.user-stamp {
+  color: $user-stamp-color;
+  font-weight: bold;
 }
