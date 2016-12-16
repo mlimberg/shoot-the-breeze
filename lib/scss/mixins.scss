@@ -21,10 +21,22 @@
     background-color: gray;
     color: #FFF;
     cursor: default;
+    box-shadow: 0px 0px 0px 0px;
   }
   &[disabled]:hover {
     background-color: gray;
     color: #FFF;
     cursor: default;
+    box-shadow: 0px 0px 0px 0px;
   }
+}
+
+@mixin charCount($color) {
+  font-family: $main-font;
+  color: $color;
+  font-weight: 300;
+  font-size: 14px;
+  margin: 5px 10px;
+  width: 20px;
+  text-align: center;
 }
