@@ -1,7 +1,11 @@
 @import 'variables';
 
 .messageSection {
-  height: 600px;
+  height: 400px;
+  width: 80%;
+  margin-top: 40px;
+  display: inline-block;
+  overflow-y: scroll;
 }
 
 .time-stamp, .user-stamp {
