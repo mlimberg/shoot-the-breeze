@@ -1,0 +1,33 @@
+.headerSection {
+  width: 100%;
+  background-color: $input-background-color;
+  display: flex;
+  flex-direction: row;
+  height: 50px;
+  align-items: center;
+}
+
+.mainH1 {
+  padding: 0px 10px;
+  color: #FFF;
+  font-weight: 700;
+}
+
+.searchInput {
+  background-color: $input-background;
+  height: 30px;
+  width: 50%;
+  border: none;
+  outline: none;
+  border-radius: 3px;
+  margin: 5px 10px;
+  font-size: 14px;
+  &:focus {
+    background-color: #FFF;
+  }
+}
+
+.sortButton {
+  @include input-button($sort-button-color);
+
+}
