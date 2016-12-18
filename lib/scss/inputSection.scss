@@ -31,12 +31,6 @@
   }
 }
 
-.log-in-message {
-  background-color: $log-in-message-color;
-  padding: 13px 16px;
-  color: #FFF;
-}
-
 .submitMsgBtn {
   @include input-button($submit-background);
 }
@@ -49,6 +43,12 @@
   background-color: $log-in-message-color;
   display: flex;
   flex-direction: row;
+}
+
+.log-in-message {
+  background-color: $log-in-message-color;
+  padding: 13px 16px;
+  color: #FFF;
 }
 
 .signInButton {
