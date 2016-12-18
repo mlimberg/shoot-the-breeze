@@ -42,3 +42,33 @@
 .clearMsgBtn {
   @include input-button($clear-background);
 }
+
+.currentUser {
+  background-color: $log-in-message-color;
+  display: flex;
+  flex-direction: row;
+}
+
+.signInButton {
+  @include input-button($submit-background);
+  width: 75px;
+  font-family: $main-font;
+}
+
+.signOutButton {
+  background-color: $log-in-message-color;
+  border: none;
+  height: 100%;
+  text-decoration: underline;
+  font-size: 12px;
+  font-family: $main-font;
+  vertical-align: middle;
+  &:hover {
+    cursor: pointer;
+    color: white;
+  }
+}
+
+.signInBanner {
+  background-color: #95a5a6;
+}
