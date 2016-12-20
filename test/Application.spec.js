@@ -29,11 +29,33 @@ describe('Application', () => {
     const wrapper = shallow(<Application />)
     expect(wrapper.state().filteredMessages).to.equal(null)
   })
+  it('has a state of filteredUsers to null', () => {
+    const wrapper = shallow(<Application />)
+    expect(wrapper.state().filteredUsers).to.equal(null)
+  })
+
+  it('has a state of filteredInput to null', () => {
+    const wrapper = shallow(<Application />)
+    expect(wrapper.state().filteredInput).to.equal(null)
+  })
 
   it('has a state of user equal to null', () => {
     const wrapper = shallow(<Application />)
     expect(wrapper.state().user).to.equal(null)
   })
+  it('has a state of allUsers to null', () => {
+    const wrapper = shallow(<Application />)
+    expect(wrapper.state().allUsers).to.equal(null)
+  })
+  it('has a state of sortMsg to true', () => {
+    const wrapper = shallow(<Application />)
+    expect(wrapper.state().sortMsg).to.equal(true)
+  })
+  it('has a state of userSelected to null', () => {
+    const wrapper = shallow(<Application />)
+    expect(wrapper.state().userSelected).to.equal(null)
+  })
+
 
 });
 
