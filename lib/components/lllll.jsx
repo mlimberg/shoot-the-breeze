@@ -13,7 +13,6 @@ export default class Application extends Component {
     this.state = {
       messages: [],
       filteredMessages: null,
-      filteredUsers: null,
       user: null,
       email: null,
       allUsers: null,
@@ -33,11 +32,11 @@ export default class Application extends Component {
   checkUser() {
     //loop through message array to find all names and emails
     let array = this.state.messages.map( (message) => {
-      let user = [message.user].join(' ')
-      console.log(user)
+      let user = [message.user, '(' + message.email + ')'].join(' ')
+
       return user
     })
-    let uniqueName = array.filter((elem, index, self)=> {
+    var uniqueName = array.filter((elem, index, self)=> {
     return index == self.indexOf(elem);
   })
   this.setState({allUsers: uniqueName});
@@ -68,28 +67,19 @@ export default class Application extends Component {
     this.checkUser();
   }
 
-  sort() {
-    this.state.filteredMessages ? this.state.filteredMessages.reverse() : this.state.messages.reverse();
-    this.setState({ sortMsg: !this.state.sortMsg })
-  }
+  // sort() {
+  //   this.state.filteredMessages ? this.setState({ filteredMessages: this.state.filteredMessages.reverse()}) : this.setState({ messages: this.state.messages.reverse()})
+  //   this.setState({ sortMsg: !this.state.sortMsg })
+  // }
 
-  filter(input) {
-    const filterArray = this.state.messages.filter((obj) => {
-      if(obj.message.includes(input)) {
-        return obj
+  compareInputToMessages(e) {
+    let value = e.target.value
+    let filterArray = this.state.messages.filter( (object, i, array) => {
+      if (object.message.includes(value)) {
+        return object
       }
     })
-    this.setState({ filteredMessages: input ? filterArray : null })
-  }
-
-  filterByUser(e) {
-    let userClicked = e.currentTarget.innerHTML
-    const filterArray = this.state.messages.filter((obj) => {
-      if(obj.user === userClicked) {
-        return obj
-      }
-    })
-    this.setState( { filteredMessages: filterArray  })
+    this.setState({filteredMessages: filterArray})
   }
 
   render() {
@@ -97,20 +87,19 @@ export default class Application extends Component {
       <div className="application">
 
         <header>
-          <Search messages={this.state.messages}
-                  handleChange={this.filter.bind(this)}
-                  handleClick={this.sort.bind(this)}
+          <Search
+                  handleChange = {this.compareInputToMessages.bind(this)}
+                  messages={this.state.messages}
                   text={this.state.sortMsg ? 'Sort ⬇' : 'Sort ⬆'} />
                 />
         </header>
 
         <div className="messageSection">
-          <MessageContainer messages = { this.state.filteredMessages ? this.state.filteredMessages : this.state.messages}/>
+          <MessageContainer messages = {this.state.filteredMessages ? this.state.filteredMessages : this.state.messages}/>
         </div>
 
         <aside>
-          <Users users={this.state.allUsers}
-                handleClick={this.filterByUser.bind(this)}/>
+          <Users users={this.state.allUsers}/>
         </aside>
 
         <div> {
