@@ -14,4 +14,11 @@
     color: $submit-background;
     cursor: pointer;
   }
+  &:focus {
+    color: green;
+  }
+}
+
+#All {
+  color: #2ecc71;
 }
