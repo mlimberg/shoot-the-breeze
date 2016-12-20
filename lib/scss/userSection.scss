@@ -7,3 +7,11 @@
   margin-left: 80%;
   position: fixed;
 }
+
+.userSelection {
+  margin: 5px 0px;
+  &:hover {
+    color: $submit-background;
+    cursor: pointer;
+  }
+}
