@@ -2,7 +2,7 @@ import React from 'react';
 
 import { shallow, mount, render } from 'enzyme';
 import { assert, expect } from 'chai';
-
+import sinon from 'sinon';
 
 import Application from '../lib/components/Application';
 import Search from '../lib/components/Search';
@@ -62,6 +62,12 @@ describe('Application', () => {
     expect(wrapper.state().userSelected).to.equal(null)
   })
 
+  it('calls componentDidMount', () => {
+    sinon.spy(Application.prototype, 'componentDidMount');
+    const wrapper = mount(<Application />);
+    expect(Application.prototype.componentDidMount.calledOnce).to.equal(true);
+  });
+
 });
 
 describe('Search', () => {
@@ -110,9 +116,29 @@ describe('Search', () => {
 
 describe('MessageContainer', () => {
 
-  it.skip('renders as a <div>', () => {
-    const wrapper = shallow(<MessageContainer messages />)
+  it('renders as a <div>', () => {
+    const wrapper = shallow(<MessageContainer messages={[]} />)
     assert.equal(wrapper.type(), 'div');
+  });
+
+  it('should have a time-and-user class', () => {
+    const wrapper = shallow(<MessageContainer messages={[]} />)
+    expect(wrapper.hasClass('time-and-user'));
+  });
+
+  it('should have a time-stamp class', () => {
+    const wrapper = shallow(<MessageContainer messages={[]} />)
+    expect(wrapper.hasClass('time-stamp'));
+  });
+
+  it('should have a user-stamp class', () => {
+    const wrapper = shallow(<MessageContainer messages={[]} />)
+    expect(wrapper.hasClass('user-stamp'));
+  });
+
+  it('should have a message-stamp class', () => {
+    const wrapper = shallow(<MessageContainer messages={[]} />)
+    expect(wrapper.hasClass('message-stamp'));
   });
 
 })
@@ -140,10 +166,6 @@ describe('Users', () => {
   })
 
 });
-
-
-
-
 
 describe('Input', () => {
 
@@ -176,6 +198,5 @@ describe('Input', () => {
     const wrapper = shallow(<Input />)
     expect(wrapper.find('.clearMsgBtn')).to.have.length(1);
   })
-
 
 });
