@@ -1,11 +1,17 @@
 .headerSection {
-  width: 100%;
+  width: 100vw;
   background-color: $input-background-color;
+  height: 10vh;
+  position: fixed;
+}
+
+.headerContent {
+  width: 100vw;
+  height: 10vh;
   display: flex;
   flex-direction: row;
-  height: 50px;
   align-items: center;
-  position: fixed;
+
 }
 
 .mainH1 {
@@ -16,7 +22,7 @@
 
 .searchInput {
   background-color: $input-background;
-  height: 30px;
+  height: 35px;
   width: 50%;
   border: none;
   outline: none;
@@ -30,5 +36,4 @@
 
 .sortButton {
   @include input-button($sort-button-color);
-
 }
