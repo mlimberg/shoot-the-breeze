@@ -10,7 +10,6 @@ import MessageContainer from '../lib/components/MessageContainer';
 import Users from '../lib/components/Users';
 import Input from '../lib/components/Input';
 
-
 describe('Application', () => {
 
   it('renders as a <div>', () => {
@@ -97,10 +96,14 @@ describe('Search', () => {
     expect(wrapper.find('.sortButton')).to.have.length(1);
   })
 
-  it.skip("should have an onClick function on sort button", () => {
-    const wrapper = mount(<Search messages />);
-    expect(wrapper.props().children[1].props.onClick).to.be.length(1);
-  })
+  it.only('should have an onClick function on sort button', () => {
+    const handleClick = sinon.spy();
+    const wrapper = shallow(
+      <Search messages={[]} handleClick={handleClick} />
+    );
+    wrapper.find('button').simulate('click');
+    expect(handleClick).to.have.property('callCount', 1);
+  });
 
   it("should have message props", () => {
     const wrapper = mount(<Search messages={"test"} />);
@@ -155,7 +158,7 @@ describe('Users', () => {
     expect(wrapper.prop("messages")).to.equal("test");
   })
 
-  it.skip("should have users props", () => {
+  it("should have users props", () => {
     const wrapper = mount(<Users messages users={user} />);
     expect(wrapper.prop("users")).to.equal(user);
   })
