@@ -119,24 +119,35 @@ describe('MessageContainer', () => {
 
 describe('Users', () => {
 
-  it('renders as a <p>', () => {
-    const wrapper = shallow(<Users users/>)
-    assert.equal(wrapper.type(), 'p');
+  it('renders as a <div>', () => {
+    const wrapper = shallow(<Users users={[]}/>)
+    assert.equal(wrapper.type(), 'div');
   });
 
-  it("should have message props", () => {
-    const wrapper = mount(<Users messages={"test"} />);
-    expect(wrapper.prop("messages")).to.equal("test");
+  it('should have a <p> classname of .usersText', () => {
+    const wrapper = shallow(<Users users={[]}/>)
+    expect(wrapper.find('.usersText')).to.have.length(1);
+  });
+
+  it('should have a <p>  classname of .userSelection', () => {
+    const wrapper = shallow(<Users users={[]}/>)
+    expect(wrapper.find('.userSelection')).to.have.length(1);
+  });
+
+
+  it.skip("should have message props", () => {
+    const wrapper = mount(<Users users={[]} />);
+    expect(wrapper.prop("messages")).to.equal([]);
   })
 
-  it.skip("should have users props", () => {
-    const wrapper = mount(<Users messages users={user} />);
-    expect(wrapper.prop("users")).to.equal(user);
+  it("should have users props", () => {
+    const wrapper = mount(<Users messages users={[]} />);
+    expect(wrapper.prop("users")).to.deep.equal([]);
   })
 
-  it("should have resetMessages props", () => {
-    const wrapper = mount(<Users messages resetMessages={'test'} />);
-    expect(wrapper.prop("resetMessages")).to.equal('test');
+  it.skip("should have resetMessages props", () => {
+    const wrapper = mount(<Users messages resetMessages={showAllMessages} />);
+    expect(wrapper.prop("resetMessages")).to.equal(showAllMessages);
   })
 
 });
