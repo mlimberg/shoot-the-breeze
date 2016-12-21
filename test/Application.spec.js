@@ -90,6 +90,22 @@ describe('Search', () => {
     const wrapper = shallow(<Search messages />)
     expect(wrapper.find('.sortButton')).to.have.length(1);
   })
+
+  it.skip("should have an onClick function on sort button", () => {
+    const wrapper = mount(<Search messages />);
+    expect(wrapper.props().children[1].props.onClick).to.be.length(1);
+  })
+
+  it("should have message props", () => {
+    const wrapper = mount(<Search messages={"test"} />);
+    expect(wrapper.prop("messages")).to.equal("test");
+  })
+
+  it("should have handleChange props", () => {
+    const wrapper = mount(<Search messages handleChange={"test"} />);
+    expect(wrapper.prop("handleChange")).to.equal("test");
+  })
+
 });
 
 describe('MessageContainer', () => {
@@ -108,7 +124,22 @@ describe('Users', () => {
     assert.equal(wrapper.type(), 'p');
   });
 
-})
+  it("should have message props", () => {
+    const wrapper = mount(<Users messages={"test"} />);
+    expect(wrapper.prop("messages")).to.equal("test");
+  })
+
+  it.skip("should have users props", () => {
+    const wrapper = mount(<Users messages users={user} />);
+    expect(wrapper.prop("users")).to.equal(user);
+  })
+
+  it("should have resetMessages props", () => {
+    const wrapper = mount(<Users messages resetMessages={'test'} />);
+    expect(wrapper.prop("resetMessages")).to.equal('test');
+  })
+
+});
 
 
 
