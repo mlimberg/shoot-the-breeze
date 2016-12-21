@@ -47,9 +47,9 @@ describe('Application', () => {
     expect(wrapper.state().user).to.equal(null)
   })
 
-  it('has a state of allUsers to null', () => {
+  it('has a state of allUsers to []', () => {
     const wrapper = shallow(<Application />)
-    expect(wrapper.state().allUsers).to.equal(null)
+    expect(wrapper.state().allUsers).to.deep.equal([])
   })
 
   it('has a state of sortMsg to true', () => {
@@ -120,7 +120,7 @@ describe('MessageContainer', () => {
 describe('Users', () => {
 
   it('renders as a <p>', () => {
-    const wrapper = shallow(<Users />)
+    const wrapper = shallow(<Users users/>)
     assert.equal(wrapper.type(), 'p');
   });
 
@@ -140,6 +140,8 @@ describe('Users', () => {
   })
 
 });
+
+
 
 
 
