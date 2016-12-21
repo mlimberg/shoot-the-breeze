@@ -170,7 +170,6 @@ describe('Users', () => {
   })
 
   it("should have users props", () => {
-
     const wrapper = mount(<Users messages users={[]} />);
     expect(wrapper.prop("users")).to.deep.equal([]);
   })
