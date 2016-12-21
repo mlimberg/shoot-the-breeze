@@ -2,14 +2,13 @@ import React from 'react';
 
 import { shallow, mount, render } from 'enzyme';
 import { assert, expect } from 'chai';
-
+import sinon from 'sinon';
 
 import Application from '../lib/components/Application';
 import Search from '../lib/components/Search';
 import MessageContainer from '../lib/components/MessageContainer';
 import Users from '../lib/components/Users';
 import Input from '../lib/components/Input';
-
 
 describe('Application', () => {
 
@@ -62,6 +61,12 @@ describe('Application', () => {
     expect(wrapper.state().userSelected).to.equal(null)
   })
 
+  it('calls componentDidMount', () => {
+    sinon.spy(Application.prototype, 'componentDidMount');
+    const wrapper = mount(<Application />);
+    expect(Application.prototype.componentDidMount.calledOnce).to.equal(true);
+  });
+
 });
 
 describe('Search', () => {
@@ -91,10 +96,14 @@ describe('Search', () => {
     expect(wrapper.find('.sortButton')).to.have.length(1);
   })
 
-  it.skip("should have an onClick function on sort button", () => {
-    const wrapper = mount(<Search messages />);
-    expect(wrapper.props().children[1].props.onClick).to.be.length(1);
-  })
+  it.only('should have an onClick function on sort button', () => {
+    const handleClick = sinon.spy();
+    const wrapper = shallow(
+      <Search messages={[]} handleClick={handleClick} />
+    );
+    wrapper.find('button').simulate('click');
+    expect(handleClick).to.have.property('callCount', 1);
+  });
 
   it("should have message props", () => {
     const wrapper = mount(<Search messages={"test"} />);
@@ -110,9 +119,29 @@ describe('Search', () => {
 
 describe('MessageContainer', () => {
 
-  it.skip('renders as a <div>', () => {
-    const wrapper = shallow(<MessageContainer messages />)
+  it('renders as a <div>', () => {
+    const wrapper = shallow(<MessageContainer messages={[]} />)
     assert.equal(wrapper.type(), 'div');
+  });
+
+  it('should have a time-and-user class', () => {
+    const wrapper = shallow(<MessageContainer messages={[]} />)
+    expect(wrapper.hasClass('time-and-user'));
+  });
+
+  it('should have a time-stamp class', () => {
+    const wrapper = shallow(<MessageContainer messages={[]} />)
+    expect(wrapper.hasClass('time-stamp'));
+  });
+
+  it('should have a user-stamp class', () => {
+    const wrapper = shallow(<MessageContainer messages={[]} />)
+    expect(wrapper.hasClass('user-stamp'));
+  });
+
+  it('should have a message-stamp class', () => {
+    const wrapper = shallow(<MessageContainer messages={[]} />)
+    expect(wrapper.hasClass('message-stamp'));
   });
 
 })
@@ -129,7 +158,7 @@ describe('Users', () => {
     expect(wrapper.prop("messages")).to.equal("test");
   })
 
-  it.skip("should have users props", () => {
+  it("should have users props", () => {
     const wrapper = mount(<Users messages users={user} />);
     expect(wrapper.prop("users")).to.equal(user);
   })
@@ -140,10 +169,6 @@ describe('Users', () => {
   })
 
 });
-
-
-
-
 
 describe('Input', () => {
 
@@ -176,6 +201,5 @@ describe('Input', () => {
     const wrapper = shallow(<Input />)
     expect(wrapper.find('.clearMsgBtn')).to.have.length(1);
   })
-
 
 });
