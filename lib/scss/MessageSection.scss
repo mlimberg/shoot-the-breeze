@@ -1,10 +1,14 @@
 .messageSection {
-  height: 70vh;
+  height: 100%;
   width: 70vw;
   margin-top: 11vh;
-  margin-bottom: 20vh;
-  overflow-y: scroll;
+  margin-bottom: 19vh;
+  // overflow-y: scroll;
   float: left;
+}
+
+#messageBox {
+  height: 100%;
 }
 
 .time-stamp, .user-stamp {
