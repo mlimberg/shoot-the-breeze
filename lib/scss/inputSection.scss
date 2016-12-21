@@ -2,9 +2,8 @@
   background-color: $input-background-color;
   display: flex;
   flex-direction: row;
-  height: 50px;
+  height: 10vh;
   align-items: center;
-  position: fixed;
   width: 100%;
 }
 
@@ -19,7 +18,7 @@
 .messageInput {
   display: inline-block;
   background-color: $input-background;
-  height: 30px;
+  height: 35px;
   width: 75%;
   border: none;
   outline: none;
@@ -73,4 +72,10 @@
 
 .signInBanner {
   background-color: #95a5a6;
+}
+
+.footerSection {
+  position: fixed;
+  bottom: 0;
+  width: 100%;
 }
