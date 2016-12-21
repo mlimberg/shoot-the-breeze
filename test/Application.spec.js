@@ -170,13 +170,8 @@ describe('Users', () => {
   })
 
   it("should have users props", () => {
-<<<<<<< HEAD
     const wrapper = mount(<Users messages users={[]} />);
     expect(wrapper.prop("users")).to.deep.equal([]);
-=======
-    const wrapper = mount(<Users messages users={user} />);
-    expect(wrapper.prop("users")).to.equal(user);
->>>>>>> 17ce585cc2451a15c423d76958a33af92d38bee6
   })
 
   it.skip("should have resetMessages props", () => {
