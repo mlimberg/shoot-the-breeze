@@ -1,4 +1,4 @@
-@media (min-width: 200px) and (max-width: 450px) {
+@media (max-width: 450px) {
   .userSection, .mainH1, .log-in-message {
     display: none;
   }
@@ -51,11 +51,11 @@
   }
 
   #messageBox {
-    width: 100vw;
+    width: 95vw;
   }
 
   .signOutButton {
-    background-color: #2c3e50;
+    background-color: $input-background-color;
     color: white;
     position: fixed;
     bottom: 0;
